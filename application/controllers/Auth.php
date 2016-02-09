@@ -73,4 +73,10 @@ public function __construct(){
 			$this->load->view('register');
 		}
 	}
+
+	public function logout(){
+		$this->session->unset_userdata('is_logged_in');
+		$this->session->sess_destroy();
+		redirect('login');
+	}
 }

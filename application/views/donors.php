@@ -31,8 +31,8 @@
                                         <td><?= $donor->role ?></td>
                                         <td><?= $donor->blood_grp ?></td>
                                         <td>
-                                            <a href="<?= site_url('donor/'.$donor->id)?>" class="btn btn-default btn-success">Edit</a>
-                                            <a href="<?= site_url('donor/delete/'.$donor->id)?>" class="btn btn-default btn-danger">Delete</a>
+                                            <a href="<?= site_url('donor/edit/'.$donor->id)?>" class="btn btn-default btn-success">Edit <i class="pe-7s-edit"></i> </a>
+                                            <a delete-id='<?=$donor->id?>' delete-type='delete_donor' class="btn btn-default btn-danger delete-object">Delete <i class="pe-7s-delete-user" </a>
                                         </td>
                                     </tr>
                                        <?php }

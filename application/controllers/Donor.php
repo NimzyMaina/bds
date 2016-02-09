@@ -21,10 +21,15 @@ class Donor extends CI_Controller {
 public function __construct(){
 	parent::__construct();
 	$this->load->model('user');
+
+	if(empty($this->session->userdata('is_logged_in'))){
+		redirect('login');
+	}
 }
 
-public function index($id){
+public function edit($id){
 	$data['donor'] = $this->user->getByID($id);
+	$data['id'] = $id;
 
 	$this->form_validation->set_rules('fname','First Name','required');
 		$this->form_validation->set_rules('lname','Last Name','required');

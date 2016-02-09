@@ -26,7 +26,7 @@
                     </ul>-->
                 </nav>
                 <p class="copyright pull-right">
-                    &copy; 2015 <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                    &copy; <?=date('Y')?> <a href="<?=site_url()?>">Blood Donation System</a>, Saving Lives
                 </p>
             </div>
         </footer>
@@ -40,6 +40,8 @@
     <!--   Core JS Files   -->
     <script src="<?= site_url('assets/js/jquery-1.10.2.js')?>" type="text/javascript"></script>
     <script src="<?= site_url('assets/js/bootstrap.min.js')?>" type="text/javascript"></script>
+    <script src="<?= site_url('assets/js/jquery-ui.min.js')?>" type="text/javascript"></script>
+
     
     <!--  Checkbox, Radio & Switch Plugins -->
     <script src="<?= site_url('assets/js/bootstrap-checkbox-radio-switch.js')?>"></script>
@@ -59,7 +61,15 @@
     <script src="<?= site_url('assets/js/light-bootstrap-dashboard.js')?>"></script>
     
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-    <script src="<?= site_url('assets/js/demo.js')?>"></script>
+    <!-- <script src="<?= site_url('assets/js/demo.js')?>"></script> -->
+
+    <script src="<?= site_url('assets/js/sweetalert2.min.js')?>"></script>
+    <script>
+    var ajax_url = '<?= site_url('ajax')?>';
+    </script>
+
+
+    <script src="<?= site_url('assets/js/main.js')?>"></script>
     
     <script type="text/javascript">
         $(document).ready(function(){

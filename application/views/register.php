@@ -119,7 +119,7 @@
 					<div class="panel-heading">
 						<div class="row">
 							<div class="col-xs-6">
-								<a href="<?=site_url('auth')?>" id="login-form-link">Login</a>
+								<a href="<?=site_url('login')?>" id="login-form-link">Login</a>
 							</div>
 							<div class="col-xs-6">
 								<a href="#" class="active" id="register-form-link">Register</a>

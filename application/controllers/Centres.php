@@ -13,6 +13,10 @@ class Centres extends  CI_Controller
         parent::__construct();
         $this->load->model('user');
         $this->load->model('centres_model');
+
+        if(empty($this->session->userdata('is_logged_in'))){
+            redirect('login');
+        }
     }
 
     public function add(){
@@ -22,18 +26,18 @@ class Centres extends  CI_Controller
         $this->form_validation->set_rules('address','Address','required');
 
         $centre = array(
-            'name' => $_POST['name'],
-            'phone' =>$_POST['phone'],
-            'email'=> $_POST['email'],
-            'address' => $_POST['address']
+            'name' => $this->input->post('name'),
+            'phone' =>$this->input->post('phone'),
+            'email'=> $this->input->post('email'),
+            'address' => $this->input->post('address')
         );
 
         if($this->form_validation->run() == true){
-            if($this->centers_model->add($centre)){
-                $this->session->flashdata('success','Centre Successfully Added!!');
+            if($this->centres_model->add($centre)){
+                $this->session->set_flashdata('success','Centre Successfully Added!!');
                 redirect(current_url());
             }else{
-                $this->session->flashdata('error','Centre Not Added!!');
+                $this->session->set_flashdata('error','Centre Not Added!!');
                 redirect(current_url());
             }
         }else{
@@ -47,10 +51,10 @@ class Centres extends  CI_Controller
         $data['id'] = $id;
         $data['centre'] = $this->centres_model->getById($id);
         $centre = array(
-            'name' => $_POST['name'],
-            'phone' =>$_POST['phone'],
-            'email'=> $_POST['email'],
-            'address' => $_POST['address']
+            'name' => $this->input->post('name'),
+            'phone' =>$this->input->post('phone'),
+            'email'=> $this->input->post('email'),
+            'address' => $this->input->post('address')
         );
 
         $this->form_validation->set_rules('name','Name','required');
@@ -60,10 +64,10 @@ class Centres extends  CI_Controller
 
         if($this->form_validation->run() == true){
             if($this->centres_model->edit($id,$centre)){
-                $this->session->flashdata('success','Centre Successfully Edited!!');
+                $this->session->set_flashdata('success','Centre Successfully Edited!!');
                 redirect(current_url());
             }else{
-                $this->session->flashdata('error','Centre Not Edited!!');
+                $this->session->set_flashdata('error','Centre Not Edited!!');
                 redirect(current_url());
             }
         }else{

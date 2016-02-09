@@ -122,7 +122,7 @@
 								<a href="#" class="active" id="login-form-link">Login</a>
 							</div>
 							<div class="col-xs-6">
-								<a href="<?=site_url('auth/register')?>" id="register-form-link">Register</a>
+								<a href="<?=site_url('register')?>" id="register-form-link">Register</a>
 							</div>
 						</div>
 						<hr>

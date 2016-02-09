@@ -16,8 +16,19 @@
                     Blood Donation
                 </a>
             </div>
+
                        <?php $title = $this->uri->segment(1);?>
             <ul class="nav">
+                <?php if($role == 'donor') { ?>
+                    <li class="<?php if (null == $this->uri->segment(2)){ $title = 'Basic'; echo 'active';}?>">
+                        <a href="<?php echo site_url('basic'); ?>">
+                            <i class="pe-7s-graph"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                <?php } ?>
+
+                <?php if($role == 'admin'){ ?>
                 <li class="<?php if (null == $this->uri->segment(2)){ $title = 'Dashboard'; echo 'active';}?>">
                     <a href="<?php echo site_url('home'); ?>">
                         <i class="pe-7s-graph"></i> 
@@ -29,7 +40,22 @@
                         <i class="pe-7s-users"></i> 
                         <p>Donors</p>
                     </a>
-                </li> 
+                </li>
+                <?php } ?>
+                <li class="<?php if ($this->uri->segment(2) == 'donations'){ $title = $this->uri->segment(2); echo 'active';}?>">
+                    <a href="<?php echo site_url('home/donations'); ?>">
+                        <i class="pe-7s-plus"></i>
+                        <p>Donations</p>
+                    </a>
+                </li>
+                <?php if($role == 'admin'){ ?>
+                <li class="<?php if ($this->uri->segment(2) == 'centres'){ $title = $this->uri->segment(2); echo 'active';}?>">
+                    <a href="<?php echo site_url('home/centres'); ?>">
+                        <i class="pe-7s-umbrella"></i>
+                        <p>Centers</p>
+                    </a>
+                </li>
+                <?php } ?>
             </ul> 
         </div>
     </div>
@@ -46,7 +72,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><?= ucfirst($title)?></a>
+                    <a class="navbar-brand" href="#"><?=@ ucfirst($title)?></a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -58,13 +84,9 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a><?=ucwords($fullname)?></a></li>
                         <li>
-                           <a href="">
-                               Account
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
+                            <a href="<?=site_url('logout')?>">
                                 Log out
                             </a>
                         </li>

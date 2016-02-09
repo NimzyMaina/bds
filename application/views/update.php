@@ -8,7 +8,19 @@
             <p class="category">Manage Donor Details in the Database</p>
         </div>
         <div class="content">
-            <form action="<?= site_url('donor')?>" methods="post">
+            <?php if(null != $this->session->flashdata('success')){?>
+                <div class="alert alert-success">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Success!</strong> <?=$this->session->flashdata('success')?>.
+                </div>
+            <?php }?>
+            <?php if(null != $this->session->flashdata('error')){?>
+                <div class="alert alert-danger">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Fail!</strong> <?=$this->session->flashdata('error')?>.
+                </div>
+            <?php }?>
+            <form action="<?= site_url("donor/edit/$id")?>" method="post">
             <div class="row">
             <div class="form-group col col-md-6">
                 <label for="fname">First Name</label>
@@ -41,18 +53,23 @@
                 <div class="form-group col col-md-6">
                     <label for="blood_grp">Blood Group</label><br />
         <?php 
-        echo form_radio('blood_grp', 'A+', FALSE)."A+ &nbsp;";
-            echo form_radio('blood_grp', 'A-', FALSE)."A- &nbsp;";
-            echo form_radio('blood_grp', 'B+', FALSE)."B+ &nbsp;";
-            echo form_radio('blood_grp', 'B-', FALSE)."B- &nbsp;";
-            echo form_radio('blood_grp', 'AB+', FALSE)."AB+ &nbsp;";
-            echo form_radio('blood_grp', 'AB-', FALSE)."AB- &nbsp;";
-            echo form_radio('blood_grp', 'O+', FALSE)."O+ &nbsp;";
-            echo form_radio('blood_grp', 'O-', FALSE)."O- &nbsp;";
+        echo form_radio('blood_grp', 'A+', $donor[0]->blood_grp == 'A+')."A+ &nbsp;";
+            echo form_radio('blood_grp', 'A-', $donor[0]->blood_grp == 'A-')."A- &nbsp;";
+            echo form_radio('blood_grp', 'B+', $donor[0]->blood_grp == 'B+')."B+ &nbsp;";
+            echo form_radio('blood_grp', 'B-', $donor[0]->blood_grp == 'B-')."B- &nbsp;";
+            echo form_radio('blood_grp', 'AB+', $donor[0]->blood_grp == 'AB+')."AB+ &nbsp;";
+            echo form_radio('blood_grp', 'AB-', $donor[0]->blood_grp == 'Ab-')."AB- &nbsp;";
+            echo form_radio('blood_grp', 'O+', $donor[0]->blood_grp == 'O+')."O+ &nbsp;";
+            echo form_radio('blood_grp', 'O-', $donor[0]->blood_grp == 'O-')."O- &nbsp;";
             ?>
             <span class="text-danger"><?php echo form_error('blood_grp'); ?></span>
                 </div>
             </div>
+                <div class="row">
+                    <div class="form-group pull-right" style="padding-right: 5%">
+                        <button class="btn btn-success" type="submit">Submit <i class="pe-7s-edit"></i> </button>
+                    </div>
+                </div>
             </form>
 
         </div>
