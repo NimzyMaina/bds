@@ -83,7 +83,11 @@ public function donors(){
 
 	public function donations(){
 		//echo '<pre>';
+        if($this->role != 'admin'){
 		$data['donations'] = $this->donation->getDonations($this->user_id);
+        }else{
+            $data['donations'] = $this->donation->getDonations();
+        }
         $data['role'] = $this->role;
 		//var_dump($data['donations']);exit;
 		$this->load->view('templates/header',$data);
